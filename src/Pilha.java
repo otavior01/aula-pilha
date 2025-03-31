@@ -29,7 +29,7 @@ public class Pilha {
 
     public void pop() {
         if (ehVazia()) {
-            System.out.println("Lista vazia");
+            System.out.println("Pilha vazia");
         } else {
             this.pilha = this.pilha.getProx();
             this.numeroElementos--;
@@ -39,10 +39,10 @@ public class Pilha {
 
     public void mostra() {
         if (ehVazia()) {
-            System.out.println("Lista -> null");
+            System.out.println("Top -> null");
         } else {
             Nodo temp = this.pilha;
-            System.out.print("Lista -> " + temp.getValor());
+            System.out.print("Top -> " + temp.getValor());
             while (temp.getProx() != null) {
                 temp = temp.getProx();
                 System.out.print(" -> " + temp.getValor());
@@ -57,7 +57,7 @@ public class Pilha {
 
     public Nodo acesso(int posicao) {
         if (ehVazia()) {
-            System.out.println("Lista vazia!");
+            System.out.println("Pilha vazia!");
             return null;
         }
         if (posicao > this.numeroElementos) {
