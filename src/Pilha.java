@@ -1,79 +1,47 @@
 
 public class Pilha {
 
-    private Nodo lista;
+    private Nodo pilha;
     private int numeroElementos;
 
     public Pilha() {
-        this.lista = null;
+        this.pilha = null;
         this.numeroElementos = 0;
     }
 
     public Nodo getPilha() {
-        return lista;
+        return pilha;
     }
 
     public void setPilha(Nodo lista) {
-        this.lista = lista;
+        this.pilha = lista;
     }
 
-    public void inserirInicio(Nodo novoNodo) {
+    public void push(Nodo novoNodo) {
         if (ehVazia()) {
-            this.lista = novoNodo;
+            this.pilha = novoNodo;
         } else {
-            novoNodo.setProx(this.lista);
-            this.lista = novoNodo;
+            novoNodo.setProx(this.pilha);
+            this.pilha = novoNodo;
         }
         this.numeroElementos++;
     }
 
-    public void inserirFim(Nodo novoNodo) {
-        if (ehVazia()) {
-            this.lista = novoNodo;
-        } else {
-            Nodo temp = this.lista;
-            while (temp.getProx() != null) {
-                temp = temp.getProx();
-            }
-            temp.setProx(novoNodo);
-        }
-        this.numeroElementos++;
-    }
-
-    public void removerInicio() {
+    public void pop() {
         if (ehVazia()) {
             System.out.println("Lista vazia");
         } else {
-            this.lista = this.lista.getProx();
+            this.pilha = this.pilha.getProx();
             this.numeroElementos--;
         }
 
-    }
-
-    public void removerFim() {
-        if (ehVazia()) {
-            System.out.println("Lista vazia");
-        } else {
-            if (this.numeroElementos == 1) {
-                this.lista = null;
-            } else {
-                Nodo temp = this.lista;
-                Nodo anterior = this.lista;
-                while (temp.getProx() != null) {
-                    anterior = temp;
-                    temp = temp.getProx();
-                }
-                anterior.setProx(null);
-            }
-            this.numeroElementos--;
-        }
     }
 
     public void mostra() {
         if (ehVazia()) {
             System.out.println("Lista -> null");
         } else {
-            Nodo temp = this.lista;
+            Nodo temp = this.pilha;
             System.out.print("Lista -> " + temp.getValor());
             while (temp.getProx() != null) {
                 temp = temp.getProx();
@@ -84,7 +52,7 @@ public class Pilha {
     }
 
     public boolean ehVazia() {
-        return this.lista == null;
+        return this.pilha == null;
     }
 
     public Nodo acesso(int posicao) {
@@ -96,7 +64,7 @@ public class Pilha {
             System.out.println("Posicao invalida!");
             return null;
         } else {
-            Nodo temp = this.lista;
+            Nodo temp = this.pilha;
             for (int i = 0; i < this.numeroElementos; i++) {
                 if (i == posicao) {
                     break;
